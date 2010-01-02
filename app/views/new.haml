@@ -1,16 +1,11 @@
 %form{ :method => "post", :action =>  "/" }
-  %p.submit
-    %button.positive{ :type => "submit" }= @post.new? ? "Create Project" : "Update Project"
   %p.required
     %label{ :for => "post_name" }<
       &== Name 
     %input.text#_name{ :name => "post[title]", :type => "text", :value => @post.title }
   %p.required
     %label{ :for => "post_name" }<
-      &== Name 
-    %input.text#_name{ :name => "post[permalink]", :type => "text", :value => @post.permalink }
-  %p.required
-    %label{ :for => "post_name" }<
-      &== Name 
-    %input.text_area#_name{ :name => "post[body]", :type => "text", :value => @post.body }
-
+      &== Body 
+    %textarea{ :name => "post[body]", :cols => 45, :rows => 40}
+  %p.submit
+    %button.positive{ :type => "submit" }= @post.new? ? "Create Project" : "Update Project"

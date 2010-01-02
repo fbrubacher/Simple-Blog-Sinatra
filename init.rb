@@ -11,10 +11,12 @@ require "vendor/gems/environment.rb"
 require "dm-core"
 require "haml"
 require "sass"
+require "sinatra_more"
 require "monk/glue"
 
 class Main < Monk::Glue
   set :app_file, __FILE__
+  register SinatraMore::MarkupPlugin
   use Rack::Session::Cookie
 
   DataMapper.setup(:default, "sqlite3:inicio.sqlite3")

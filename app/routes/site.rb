@@ -11,13 +11,14 @@ class Main
   end
 
   get "/:permalink" do 
+    permalink = params[:permalink]
     @post = Post.first(:permalink => permalink)
     haml :show
   end
   
   post "/" do
     @post = Post.new(params[:post])
-    debugger
+    @post.set_permalink
     if @post.save 
       redirect "#{@post.permalink}"
     else
