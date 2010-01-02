@@ -31,7 +31,7 @@ if defined? Encoding
   Encoding.default_external = Encoding::UTF_8
 end
 
-Post.auto_migrate!
+#Post.auto_migrate!
 
 end 
 

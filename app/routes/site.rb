@@ -18,9 +18,10 @@ class Main
   
   post "/" do
     @post = Post.new(params[:post])
+    debugger
     @post.set_permalink
     if @post.save 
-      redirect "#{@post.permalink}"
+      redirect post_path(@post)
     else
       haml :new 
     end

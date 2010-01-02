@@ -1,11 +1,9 @@
-%form{ :method => "post", :action =>  "/" }
-  %p.required
-    %label{ :for => "post_name" }<
-      &== Name 
-    %input.text#_name{ :name => "post[title]", :type => "text", :value => @post.title }
-  %p.required
-    %label{ :for => "post_name" }<
-      &== Body 
-    %textarea{ :name => "post[body]", :cols => 45, :rows => 40}
-  %p.submit
-    %button.positive{ :type => "submit" }= @post.new? ? "Create Project" : "Update Project"
+- form_tag '/', :class => 'destroy-form', :method => 'post' do
+  %p
+    != label_tag :title, :class => 'first'
+    != text_field_tag "post[title]"
+  %p
+    != label_tag :body
+    != text_area_tag "post[body]", :cols => 45, :rows => 40, :value => params[:body]
+  %p
+    != submit_tag "Submit"
