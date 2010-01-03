@@ -1,3 +1,6 @@
+%h1 Listing Posts
+-for post in @posts
+  %p
+    != link_to "#{post.title}", post_path(post)
 %p 
-  -for post in @posts
-    = post.title
+  != link_to "New post", "/new"
