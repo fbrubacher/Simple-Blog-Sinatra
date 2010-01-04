@@ -5,19 +5,44 @@ class Main
     haml :new
   end 
 
+  get "/dashboard" do 
+    @current_user = current_user
+    haml :dashboard
+  end
+
   get "/" do
     @posts = Post.all
     haml :index
   end
 
-  get "/:permalink" do 
+  get "/post/:permalink" do 
     permalink = params[:permalink]
     @comment = Comment.new
     @post = Post.first(:permalink => permalink)
     haml :show
   end
 
-  post "/:permalink/comments" do |permalink| 
+  get '/login' do
+    haml_template 'session/login'
+  end
+
+  post '/login' do
+    authenticate_user!
+    redirect "/dashboard"
+  end
+
+  post '/unauthenticated/?' do
+    flash[:notice] = "That username and password are not correct!"
+    status 401
+    haml_template 'session/login'
+  end
+
+  get '/logout/?' do
+    logout_user!
+    redirect '/session/login'
+  end
+  
+  post "/post/:permalink/comments" do |permalink| 
     @post = Post.first(:permalink => permalink) 
     @comment = @post.comments.build(params[:comment])
     if @comment.save
@@ -26,7 +51,6 @@ class Main
       haml :show 
     end
   end
-  
   
   post "/" do
     @post = Post.new(params[:post])

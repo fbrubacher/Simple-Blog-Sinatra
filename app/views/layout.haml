@@ -6,4 +6,9 @@
     %link{:rel => "stylesheet", :href => "/css/main.css", :type => "text/css"}/
 
   %body
+    %p 
+      = flash[:notice]
+    %p 
+      !=link_to "Login", "/login"
+    
     != yield
