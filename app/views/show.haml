@@ -1,0 +1,24 @@
+%h2
+  != link_to "#{@post.title}", post_path(@post)
+%p 
+  = @post.body
+%p 
+  != link_to "Back to Index", "/"
+%h3 
+  %p
+    Comments:
+-for comment in @post.comments
+  %p
+    = comment.author
+    %br 
+    = comment.body
+%p
+  - form_tag "#{post_path(@post)}/comments", :method => 'post' do 
+    != label_tag "comment_author"
+    != text_field_tag "comment[author]"
+    %br
+    != label_tag "comment_tag"
+    != text_area_tag "comment[body]", :cols => 45, :rows => 40
+    %br
+    != submit_tag "Submit"
+
