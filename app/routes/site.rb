@@ -37,9 +37,9 @@ class Main
     haml_template 'session/login'
   end
 
-  get '/logout/?' do
+  get '/logout' do
     logout_user!
-    redirect '/session/login'
+    redirect '/'
   end
   
   post "/post/:permalink/comments" do |permalink| 

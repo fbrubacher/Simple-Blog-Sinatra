@@ -9,6 +9,9 @@
     %p 
       = flash[:notice]
     %p 
-      !=link_to "Login", "/login"
+      - if !logged_in?
+        !=link_to "Login", "/login"
+      - else 
+        != link_to "Logout", "/logout"
     
     != yield
