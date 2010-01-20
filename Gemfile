@@ -16,3 +16,14 @@ gem "sinatra", "0.9.4"
 gem "webrat", "0.5.1" 
 gem "sinatra_more"
 gem "rack-flash"
+gem "carrierwave"
+
+only :test do 
+  gem "contest"
+  gem "capybara"
+  gem "shoulda"
+  gem "redgreen"
+  gem "override"
+  gem "quietbacktrace"
+  gem "do_sqlite3"
+end

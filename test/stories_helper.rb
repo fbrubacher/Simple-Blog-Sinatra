@@ -2,6 +2,7 @@ require "test_helper"
 
 require "webrat"
 require "rack/test"
+debugger
 require "stories"
 require "stories/runner"
 
