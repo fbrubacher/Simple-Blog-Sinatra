@@ -1,4 +1,5 @@
 require "test_helper"
+require "routes_test_helper"
 
 class CssTest < Test::Unit::TestCase
   test "renders the default stylesheet" do
