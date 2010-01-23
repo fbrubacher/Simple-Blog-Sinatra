@@ -20,7 +20,6 @@ gem "carrierwave"
 only :test do 
 	gem "warden", "0.8.1"
   gem "contest"
-  gem "stories"
   gem "webrat"
   gem "shoulda"
   gem "redgreen"
