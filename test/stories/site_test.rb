@@ -7,9 +7,10 @@ class SiteTest < Test::Unit::TestCase
   end
   
   def test_login
+    User.create!(:email => "fbrubacher@adinet.com.uy", :password => "changeme")
     visit "/login"
-    fill_in "email", :with => "fbru02@yahoo.com.ar"  
-    fill_in "password", :with => "jakobs"  
+    fill_in "email", :with => "fbrubacher@adinet.com.uy"  
+    fill_in "password", :with => "changeme"  
     click_button "Login"  
     assert_contain "Logout"
   end
